@@ -24,12 +24,17 @@ jobs:
     - name: Upload debug aar
       uses: actions/upload-artifact@v1
       with:
-          name: debug aar
+          name: androidAssessmentModel-debug-aar
           path: assessmentModel/build/outputs/aar/assessmentModel-debug.aar
+    - name: Upload ios debug framework
+      uses: actions/upload-artifact@v1
+      with:
+          name: iosDebugFramework
+          path: assessmentModel/bin/ios/debugFramework
     - name: Build debug APK
       run: bash ./gradlew assembleDebug --stacktrace
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
-          name: app
+          name: androidAapp-debug
           path: androidApp/build/outputs/apk/debug/androidApp-debug.apk
