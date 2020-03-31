@@ -17,5 +17,24 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build with Gradle
-      run: ./gradlew build
+#     - name: Run Tests
+#       run: ./gradlew test --stacktrace
+    - name: Build Assessment Model
+      run: ./gradlew :assessmentModel:build
+    - name: Upload debug aar
+      uses: actions/upload-artifact@v1
+      with:
+          name: androidAssessmentModel-debug-aar
+          path: assessmentModel/build/outputs/aar/assessmentModel-debug.aar
+    - name: Upload ios debug framework
+      uses: actions/upload-artifact@v1
+      with:
+          name: iosDebugFramework
+          path: assessmentModel/build/bin/ios/debugFramework
+    - name: Build debug APK
+      run: bash ./gradlew assembleDebug --stacktrace
+    - name: Upload APK
+      uses: actions/upload-artifact@v1
+      with:
+          name: androidAapp-debug
+          path: androidApp/build/outputs/apk/debug/androidApp-debug.apk
