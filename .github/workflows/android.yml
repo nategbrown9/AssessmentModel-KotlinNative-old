@@ -30,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
           name: iosDebugFramework
-          path: assessmentModel/bin/ios/debugFramework/assessmentModel.framework
+          path: assessmentModel/build/bin/ios/debugFramework/assessmentModel.framework
     - name: Build debug APK
       run: bash ./gradlew assembleDebug --stacktrace
     - name: Upload APK
